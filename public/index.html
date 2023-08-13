@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>SuperSaiyan-Odyssey</title>
+     <link rel="stylesheet" href="style.css">
+     <script src="script.js"></script>
+</head>
+
+<body>
+     <div class="gamecontainer">
+          <div class="gameover">Game Over
+               <form class="form" method="post">
+                    <div>
+                         Name : <input type="text" name="name" id="name" placeholder="Enter your Name">
+                    </div>
+                    <br>
+                    <div>
+                         Email : <input type="text" name="email" id="email" placeholder="Enter your Email">
+                    </div>
+                    <br>
+                    <div>
+                         <button class="button" type="submit" id="submitForm">Submit Now</button>
+                         <button class="button" type="reset" id="restart">Restart Game</button>
+                    </div>
+               </form>
+          </div>
+          <div id="scoreCont" name="score">Your Score: 0</div>
+          <div class="player"></div>
+          <div class="dino dinoanimate"></div>
+          <script>
+               const submitForm = document.getElementById('submitForm');
+               const Name = document.getElementById('name');
+               const Email = document.getElementById('email');
+               const Score = document.getElementById('scoreCont');
+               submitForm.addEventListener('click', async (e) => {
+                    e.preventDefault();
+                    if (!Name.value.trim() || !Email.value.trim()) {
+                         alert("all filds are manatory");
+                         return;
+                    }
+                    else if (!Email.value.trim() || !Email.value.includes("@")) {
+                         alert("Please Enter valid Email");
+                         return;
+                    }
+                    const obj = {
+                         name: Name.value,
+                         email: Email.value,
+                         score: Score.value
+
+                    };
+                    try {
+                         const responce = await fetch('http://143.110.182.131:5000/api/score', {
+                              method: "POST",
+                              headers: {
+                                   "Content-type": "application/json"
+                              },
+                              body: JSON.stringify(obj)
+                         });
+                         // Resetting form to its initial state
+                         submitForm.form.reset();
+                    } catch (error) {
+                         console.error('An error occurred:', error);
+                    }
+               });
+          </script>
+     </div>
+</body>
+
+</html>

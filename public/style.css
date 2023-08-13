@@ -1,0 +1,133 @@
+ * {
+     margin: 0;
+     padding: 0;
+}
+
+body {
+     overflow: hidden;
+}
+
+.gamecontainer {
+     background-image: url(img/background.jpg);
+     background-size: 100vw 100vh;
+     width: 100%;
+     height: 100vw;
+}
+
+.player {
+     background-image: url(img/goku4.png);
+     background-size: cover;
+     position: absolute;
+     bottom: 16vh;
+     left: 15vw;
+     /* transform: scaleX(-1); */
+     width: 14vw;
+     height: 14vw;
+}
+
+.dino {
+     background-image: url(img/goku1.png);
+     /* transform: scaleX(-1); */
+     background-size: cover;
+     position: absolute;
+     bottom: 17vh;
+     right: 1vw;
+     width: 10vw;
+     height: 12vw;
+}
+
+.animateplayer {
+     animation: player 0.6s linear;
+
+}
+
+@keyframes player {
+     0% {
+          bottom: 5vw;
+     }
+
+     25% {
+          bottom: 25vw;
+     }
+
+     50% {
+          bottom: 35vw;
+     }
+
+     75% {
+          bottom: 20vw;
+     }
+
+     100% {
+          bottom: 5vw;
+     }
+}
+
+.dinoanimate {
+     animation: dinoanimate 5s linear infinite;
+}
+
+@keyframes dinoanimate {
+     0% {
+          left: 100vw;
+     }
+     25% {
+          left: 75vw;
+     }
+
+     50% {
+          left: 50vw;
+     }
+
+     75% {
+          left: 25vw;
+     }
+
+     100% {
+          left: -10vw;
+     }
+}
+
+.gameover {
+     visibility: hidden;
+     position: relative;
+     top: 100px;
+     font-size: 50px;
+     text-align: center;
+}
+
+.form {
+     padding: 20px;
+     font-size: 20px;
+}
+input{
+     font-size: medium;
+     width: 300px;
+}
+.button{
+     font-size: medium;
+     margin-left: 10px;
+     width: 200px;
+     background-color: green;
+     padding: 5px;
+     color: white;
+     border-radius: 10px ;
+     border-color: white;
+     text-shadow: 50px;
+}
+.button:hover{
+
+     background-color: grey;
+    
+}
+
+#scoreCont {
+     position: absolute;
+     font-size: 20px;
+     left: 20px;
+     top: 20px;
+     padding: 10px;
+     border-radius: 10px;
+     text-align: center;
+     border: 2px solid black;
+}
