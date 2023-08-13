@@ -15,24 +15,24 @@ body {
 }
 
 .player {
-     background-image: url(img/goku4.png);
+     background-image: url(img/goku1.png);
      background-size: cover;
      position: absolute;
      bottom: 16vh;
      left: 15vw;
-     /* transform: scaleX(-1); */
-     width: 14vw;
-     height: 14vw;
+     transform: scaleX(-1);
+     width: 12vw;
+     height: 15vw;
 }
 
 .dino {
-     background-image: url(img/goku1.png);
-     /* transform: scaleX(-1); */
+     background-image: url(img/goku4.png);
+     transform: scaleX(-1);
      background-size: cover;
      position: absolute;
      bottom: 17vh;
      right: 1vw;
-     width: 10vw;
+     width: 12vw;
      height: 12vw;
 }
 
