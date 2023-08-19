@@ -32,7 +32,7 @@ document.onkeydown = function (e) {
 }
 // Defining the Enivorment rules 
 setInterval(() => {
-     // audio.play();
+     audio.play();
      player = document.querySelector('.player');
      gameover = document.querySelector('.gameover');
      dino = document.querySelector('.dino');

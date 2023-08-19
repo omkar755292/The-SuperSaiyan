@@ -8,7 +8,7 @@ env.config(); //configuring hostname and port from dotenv file
 const hostname = process.env.HOSTNAME || 'localhost';
 const port = process.env.PORT || 3000;
 
-connectDB();
+connectDB(); //connecting to mongoDB
 const app = express();
 
 //settingup middleware and routed
