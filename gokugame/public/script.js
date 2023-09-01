@@ -7,23 +7,19 @@ const audiogo = new Audio('./music/gameover.mp3');
 
 // Defining a action of the player with with respect to keybord key
 document.onkeydown = function (e) {
-     console.log("key code is: ", e.keyCode)
-     // Defining action in Upward-side in y-axis
      if (e.keyCode == 38) {
           player = document.querySelector('.player');
-          player.classList.add('animateplayer');        // add class animate player to animatie player
+          player.classList.add('animateplayer');
           setTimeout(() => {
                player.classList.remove('animateplayer');
           }, 700);
      }
-     // Defining action forward/right-hand-side in x-axis direction
      if (e.keyCode == 39) {
           player = document.querySelector('.player');
           playerX = parseInt(window.getComputedStyle(player, null).getPropertyValue('left'));
           player.style.left = playerX + 150 + "px";
 
      }
-     // Defining action backword/left-hand-side in x-axis direction
      if (e.keyCode == 37) {
           player = document.querySelector('.player');
           playerX = parseInt(window.getComputedStyle(player, null).getPropertyValue('left'));
@@ -45,7 +41,6 @@ setInterval(() => {
 
      dinoX = Math.abs(px - dx);
      dinoY = Math.abs(py - dy);
-     // console.log(dinoX && dinoY)
      if (dinoX < 70 && dinoY < 54) {
           gameover.style.visibility = 'visible';
           dino.classList.remove('dinoanimate');
@@ -65,7 +60,6 @@ setInterval(() => {
                aniDur = parseFloat(window.getComputedStyle(dino, null).getPropertyValue('animation-duration'));
                newDur = aniDur - 0.1;
                dino.style.animationDuration = newDur + 's';
-               console.log('new animation duration : ', newDur);
 
           }, 1000);
      }
