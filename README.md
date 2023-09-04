@@ -1,9 +1,6 @@
 # The-Irritated-Saiyan
 Animation Game using HTML CSS and JavaScript | Node.js, Express and MongoDB
 
-### Screenshots
-![screenshot](https://github.com/omkar755292/The-Irritated-Saiyan/assets/84575623/cfa5ee6f-e692-4ba7-9740-47751beb1f1b)
-
 ## Table of Contents
 - [Installation](#installation)
 - [Configuration](#configuration)
