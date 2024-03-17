@@ -47,7 +47,7 @@
                     const data = {
                          name: Name.value,
                          email: Email.value,
-                         score: Score.value
+                         score: parseInt(Score.textContent.replace('Your Score: ', ''))
                     };
                     try {
                          const response = await fetch('/api/score', {
