@@ -2,75 +2,74 @@
 <html lang="en">
 
 <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="icon" href="./img/gokufavicon2.png">
-     <title>The-Irritated-Saiyan</title>
-     <link rel="stylesheet" href="style.css">
-     <script src="script.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Super Saiyan</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-     <div class="gamecontainer">
-          <div class="gameover">Game Over
-               <form class="form" id="form">
-                    <div>
-                         Name : <input type="text" name="name" id="name" placeholder="Enter your Name" required>
-                    </div>
-                    <br>
-                    <div>
-                         Email : <input type="text" name="email" id="email" placeholder="Enter your Email" required>
-                    </div>
-                    <br>
-                    <div>
-                         <button class="button" type="submit">Submit Now</button>
-                         <button class="button" type="reset" id="restart">Restart Game</button>
-                    </div>
-               </form>
-          </div>
-          <div id="scoreCont" name="score">Your Score: 0</div>
-          <div class="player"></div>
-          <div class="dino dinoanimate"></div>
-          <script>
-               const Name = document.getElementById('name');
-               const Email = document.getElementById('email');
-               const Score = document.getElementById('scoreCont');
-               const Form = document.getElementById('form');
-               const restartButton = document.getElementById('restart');
+    <div class="gm-container">Game Over
+        <form action="submit" class="gm-form" id="gm-form">
+            <div>
+                Name : <input type="text" name="name" id="name" placeholder="Enter your Name" required>
+            </div>
+            <br>
+            <div>
+                Email : <input type="text" name="email" id="email" placeholder="Enter your Email" required>
+            </div>
+            <br>
+            <div>
+                <button class="gm-button" type="submit">Submit Now</button>
+                <button class="gm-button" type="reset" id="restart">Restart Game</button>
+            </div>
+        </form>
+    </div>
+    <div class="app">
+        <div id="defender" class="defender "></div>
+        <div id="attacker" class="attacker animate-attacker"></div>
+        <div id="score" class="score">Your Score: 0</div>
+    </div>
 
-               restartButton.addEventListener('click', () => {
-                    location.reload();
-               });
+    <script>
+        const Name = document.getElementById('name');
+        const Email = document.getElementById('email');
+        const Score = document.getElementById('score');
+        const Form = document.getElementById('gm-form');
+        const Restart = document.getElementById('restart');
 
-               form.addEventListener('submit', async (event) => {
-                    event.preventDefault();
-                    const data = {
-                         name: Name.value,
-                         email: Email.value,
-                         score: parseInt(Score.textContent.replace('Your Score: ', ''))
-                    };
-                    try {
-                         const response = await fetch('/api/score', {
-                              method: "POST",
-                              headers: {
-                                   "Content-type": "application/json"
-                              },
-                              body: JSON.stringify(data)
-                         });
-                         if (response.ok) {
-                              console.log('Form data submitted successfully');
-                              form.reset();
-                         } else {
-                              console.error('Form data submission failed');
-                         }
+        Restart.addEventListener('click', () => {
+            location.reload();
+        });
+        Form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = {
+                name: Name.value,
+                email: Email.value,
+                score: parseInt(Score.textContent.replace('Your Score: ', ''))
+            };
+            try {
+                const response = await fetch('/api/score', {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json"
+                    },
+                    body: JSON.stringify(data)
+                });
+                if (response.ok) {
+                    console.log('Form data submitted successfully');
+                    Form.reset();
+                } else {
+                    console.error('Form data submission failed');
+                }
 
-                    } catch (error) {
-                         console.error('An error occurred:', error);
-                    }
-               })
-
-          </script>
-     </div>
+            } catch (error) {
+                console.error('An error occurred:', error);
+            }
+        });
+    </script>
+    <script src="./script.js"></script>
 </body>
 
 </html>

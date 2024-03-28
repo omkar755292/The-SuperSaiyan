@@ -1,133 +1,138 @@
- * {
-     margin: 0;
-     padding: 0;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 body {
-     overflow: hidden;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
-.gamecontainer {
-     background-image: url(img/background.jpg);
-     background-size: 100vw 100vh;
-     width: 100%;
-     height: 100vw;
+.app {
+    background-image: url('./images/background.jpg');
+    background-size: 100vw 100vh;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
 }
 
-.player {
-     background-image: url(img/goku1.png);
-     background-size: cover;
-     position: absolute;
-     bottom: 16vh;
-     left: 15vw;
-     transform: scaleX(-1);
-     width: 12vw;
-     height: 15vw;
+.defender {
+    background-image: url('./images/goku1.png');
+    height: 30vh;
+    width: 30vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    left: 5vw;
+    bottom: 17.5vh;
+    transform: scaleX(-1);
 }
 
-.dino {
-     background-image: url(img/goku4.png);
-     transform: scaleX(-1);
-     background-size: cover;
-     position: absolute;
-     bottom: 17vh;
-     right: 1vw;
-     width: 12vw;
-     height: 12vw;
+.attacker {
+    background-image: url('./images/goku2.png');
+    height: 23vh;
+    width: 23vh;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    right: 5vw;
+    bottom: 17.5vh;
+    transform: scaleX(-1);
 }
 
-.animateplayer {
-     animation: player 0.6s linear;
-
+.score {
+    background-image: url('./images/pngwing.com.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    top: 0vh;
+    left: 2vw;
+    width: 10vw;
+    height: 10vw;
+    font-size: 1.2rem;
 }
 
-@keyframes player {
-     0% {
-          bottom: 5vw;
-     }
-
-     25% {
-          bottom: 25vw;
-     }
-
-     50% {
-          bottom: 35vw;
-     }
-
-     75% {
-          bottom: 20vw;
-     }
-
-     100% {
-          bottom: 5vw;
-     }
+.gm-container {
+    visibility: hidden;
+    font-size: 3rem;
+    text-align: center;
+    position: absolute;
+    top: 15vh;
+    z-index: 1;
 }
 
-.dinoanimate {
-     animation: dinoanimate 5s linear infinite;
+.gm-form {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.3rem;
+    padding: 20px;
 }
 
-@keyframes dinoanimate {
-     0% {
-          left: 100vw;
-     }
-     25% {
-          left: 75vw;
-     }
-
-     50% {
-          left: 50vw;
-     }
-
-     75% {
-          left: 25vw;
-     }
-
-     100% {
-          left: -10vw;
-     }
+.gm-form input {
+    font-size: medium;
+    padding: 5px 10px;
+    margin: 5px 0px;
+    width: 300px;
 }
 
-.gameover {
-     visibility: hidden;
-     position: relative;
-     top: 100px;
-     font-size: 50px;
-     text-align: center;
+.gm-button {
+    background-color: green;
+    border-color: white;
+    border-radius: 10px;
+    font-size: medium;
+    color: white;
+    padding: 8px;
+    width: 49%;
+    text-shadow: 50px;
 }
 
-.form {
-     padding: 20px;
-     font-size: 20px;
-}
-input{
-     font-size: medium;
-     width: 300px;
-}
-.button{
-     font-size: medium;
-     margin-left: 10px;
-     width: 200px;
-     background-color: green;
-     padding: 5px;
-     color: white;
-     border-radius: 10px ;
-     border-color: white;
-     text-shadow: 50px;
-}
-.button:hover{
-
-     background-color: grey;
-    
+.gm-button:hover {
+    background-color: grey;
 }
 
-#scoreCont {
-     position: absolute;
-     font-size: 20px;
-     left: 20px;
-     top: 20px;
-     padding: 10px;
-     border-radius: 10px;
-     text-align: center;
-     border: 2px solid black;
+.animate-defender {
+    animation: defenderMove 0.6s infinite linear;
+}
+
+@keyframes defenderMove {
+    0% {
+        bottom: 17vh;
+    }
+
+    25% {
+        bottom: 45vh;
+    }
+
+    50% {
+        bottom: 60vh;
+    }
+
+    75% {
+        bottom: 45vh;
+    }
+
+    100% {
+        bottom: 17.5vh;
+    }
+}
+
+.animate-attacker {
+    animation: attackerMove 5s infinite linear;
+}
+
+@keyframes attackerMove {
+    from {
+        right: 0vw;
+    }
+
+    to {
+        right: 100vw;
+    }
 }

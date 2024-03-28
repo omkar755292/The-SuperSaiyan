@@ -1,71 +1,90 @@
-// Defining the variable
-let score = 0;
+const gameoverTracks = [
+    './music/gameover.mp3',
+    './music/gameover-music.mp3'
+];
+
+const gamemusic = new Audio('./music/game-music.mp3');
+const clash = new Audio('./music/clash.mp3');
+const jump = new Audio('./music/jump.mp3');
+
+let defender = document.getElementById('defender');
+let attacker = document.getElementById('attacker');
+let score = document.getElementById('score');
+let gameOver = document.querySelector('.gm-container');
+
+let currentIndex = 0;
+let scoreCount = 0;
 let cross = true;
-const audio = new Audio('./music/music.mp3');
-const audioclash = new Audio('./music/clash')
-const audiogo = new Audio('./music/gameover.mp3');
 
-// Defining a action of the player with with respect to keybord key
-document.onkeydown = function (e) {
-     if (e.keyCode == 38) {
-          player = document.querySelector('.player');
-          player.classList.add('animateplayer');
-          setTimeout(() => {
-               player.classList.remove('animateplayer');
-          }, 700);
-     }
-     if (e.keyCode == 39) {
-          player = document.querySelector('.player');
-          playerX = parseInt(window.getComputedStyle(player, null).getPropertyValue('left'));
-          player.style.left = playerX + 150 + "px";
+gamemusic.play();
 
-     }
-     if (e.keyCode == 37) {
-          player = document.querySelector('.player');
-          playerX = parseInt(window.getComputedStyle(player, null).getPropertyValue('left'));
-          player.style.left = playerX - 150 + "px";
-     }
+function playGameOverTrack() {
+    if (currentIndex < gameoverTracks.length) {
+        const audio = new Audio(gameoverTracks[currentIndex]);
+        audio.onended = () => {
+            currentIndex++;
+            playGameOverTrack();
+        };
+        audio.play();
+    } else {
+        currentIndex = 0;
+    }
 }
-// Defining the Enivorment rules 
+
+document.onkeydown = function (e) {
+    let defenderX = parseInt(window.getComputedStyle(defender, null).getPropertyValue('left'));
+    switch (e.key) {
+        case "ArrowUp":
+            defender.classList.add('animate-defender');
+            setTimeout(() => {
+                defender.classList.remove('animate-defender');
+            }, 600);
+            break;
+        case "ArrowRight":
+            defender.style.left = defenderX + 150 + "px";
+            break;
+        case "ArrowLeft":
+            defender.style.left = defenderX - 150 + "px";
+            break;
+    }
+}
+
 setInterval(() => {
-     audio.play();
-     player = document.querySelector('.player');
-     gameover = document.querySelector('.gameover');
-     dino = document.querySelector('.dino');
 
-     px = parseInt(window.getComputedStyle(player, null).getPropertyValue('left'));
-     py = parseInt(window.getComputedStyle(player, null).getPropertyValue('top'));
+    DX = parseInt(window.getComputedStyle(defender, null).getPropertyValue('left'));
+    DY = parseInt(window.getComputedStyle(defender, null).getPropertyValue('top'));
+    AX = parseInt(window.getComputedStyle(attacker, null).getPropertyValue('left'));
+    AY = parseInt(window.getComputedStyle(attacker, null).getPropertyValue('top'));
 
-     dx = parseInt(window.getComputedStyle(dino, null).getPropertyValue('left'));
-     dy = parseInt(window.getComputedStyle(dino, null).getPropertyValue('top'));
+    distanceX = Math.abs(DX - AX);
+    distanceY = Math.abs(DY - AY);
 
-     dinoX = Math.abs(px - dx);
-     dinoY = Math.abs(py - dy);
-     if (dinoX < 70 && dinoY < 54) {
-          gameover.style.visibility = 'visible';
-          dino.classList.remove('dinoanimate');
-          audioclash.play();
-          audiogo.play();
-          audio.puase();
+    if (distanceX < 70 && distanceY < 54) {
+        gameOver.style.visibility = 'visible';
+        attacker.classList.remove('animate-attacker');
+        gamemusic.pause();
+        clash.play();
+        playGameOverTrack();
 
-     }
-     else if (dinoX < 145 && cross) {
-          score += 1;
-          updateScore(score);
-          cross = false;
-          setTimeout(() => {
-               cross = true;
-          }, 1000);
-          setTimeout(() => {
-               aniDur = parseFloat(window.getComputedStyle(dino, null).getPropertyValue('animation-duration'));
-               newDur = aniDur - 0.1;
-               dino.style.animationDuration = newDur + 's';
+    } else if (distanceX < 145 && cross) {
+        scoreCount += 1;
+        updateScore(scoreCount);
+        jump.play();
+        cross = false;
 
-          }, 1000);
-     }
-     function updateScore(score) {
-          scoreCont.innerHTML = "Your Score: " + score;
-     }
+        setTimeout(() => {
+            cross = true;
+        }, 600);
 
+        setTimeout(() => {
+            animationDuration = parseFloat(window.getComputedStyle(attacker, null).getPropertyValue('animation-duration'));
+            attacker.style.animationDuration = (animationDuration - 0.1) + 's';
+        }, 2000);
 
-}, 10)
+    }
+
+    function updateScore(scoreCount) {
+        score.innerHTML = "Your Score: " + scoreCount;
+    }
+
+}, 10);
