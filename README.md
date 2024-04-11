@@ -27,7 +27,7 @@ Character animations are triggered based on player input and game events. CSS tr
 
 #### Deployment
 
-The project is hosted on AWS EC2 at [The Super Saiyan - Live Project](http://13.53.187.244:9003/). 
+The project is hosted on AWS EC2 at [Live Project Link](http://13.53.187.244:9003/). 
 CI/CD is set up using GitHub Actions for automated testing and deployment.
 
 #### Testing
