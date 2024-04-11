@@ -1,4 +1,4 @@
-# The Super Saiyan: Animation Game (Single Page Web Game)
+## The Super Saiyan: Animation Game (Single Page Web Game)
 
 #### Project Overview
 
