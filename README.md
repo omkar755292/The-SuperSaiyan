@@ -1,6 +1,6 @@
 # The Super Saiyan: Animation Game (Single Page Web Game)
 
-### Project Overview
+#### Project Overview
 
 "The Super Saiyan" is an animation game featuring Goku as the player character from the Dragon Ball series. It incorporates animations for character movement and combat actions. This project started in 2022 and has been continuously developed, showcasing various features and functionalities.
 
@@ -40,7 +40,7 @@ CI/CD is set up using GitHub Actions for automated testing and deployment.
 ------------
 
 
-### Installation and Setup
+#### Installation and Setup
 
 1. Clone the repository:
    ```bash
