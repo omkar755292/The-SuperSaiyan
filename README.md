@@ -68,4 +68,4 @@ Create a .env file in the root directory and specify the following configuration
 ------------
 
 #### Contact Information
-For inquiries, collaborations, or feedback, contact [omkar panchal](mailto:your-email@example.com).
+For inquiries, collaborations, or feedback, contact [omkar panchal](mailto:omkarpanchal.cse@gmail.com).
