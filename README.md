@@ -17,18 +17,19 @@
 - **CI/CD:** Implemented using GitHub Actions for continuous integration and deployment
 
 ####  Animation Mechanics
-Character animations are triggered based on player input and game events. CSS transitions and sprite animation techniques are used for smooth and realistic character movements and actions.
+
+The animation mechanism in "The Super Saiyan" uses CSS for visual effects like Goku's jumping and movement, while JavaScript handles interactions and triggers animations based on player actions or game events. This combination creates dynamic and responsive gameplay, bringing Goku and the obstacles to life with fluid movements and engaging visuals. 
 
 #### Usage
 
 - Open the game interface in your browser: [The Super Saiyan](http://13.53.187.244:9003/)
 - Use the keyboard arrow keys to move Goku and avoid black Goku's attack.
 - Earn scores by dodging attacks and surviving as long as possible.
+- Controls Arrow Up: Jump or perform actions, Arrow Left/Right: Move Goku left or right. 
 
 #### Deployment
 
-The project is hosted on AWS EC2 at [Live Project Link](http://13.53.187.244:9003/). 
-CI/CD is set up using GitHub Actions for automated testing and deployment.
+The game is deployed on a hosting platform AWS EC2 with continuous integration and deployment (CI/CD) using GitHub Actions for automated testing and deployment.
 
 #### Testing
 
