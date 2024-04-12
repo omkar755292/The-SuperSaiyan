@@ -52,6 +52,10 @@ The game is deployed on a hosting platform AWS EC2 with continuous integration a
 2. Install dependencies:
    ```bash
    npm install
+   ```
+
+3. Start Project:
+   ```bash
    npm start
    ```
 
