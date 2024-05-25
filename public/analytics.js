@@ -1,6 +1,6 @@
 // Function to track page view
 function trackPageView(url) {
-    gtag('config', 'G-XXXXXXXXXX', {
+    gtag('config', 'G-GQBQ003CC3s', {
         'page_path': url
     });
 }
