@@ -2,11 +2,6 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Super Saiyan | Animation Game</title>
-    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
-    <link rel="stylesheet" href="./style.css">
     <!-- Google Tag Manager -->
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
@@ -17,6 +12,12 @@
                     'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-MKMCRM2W');</script>
     <!-- End Google Tag Manager -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Super Saiyan | Animation Game</title>
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
@@ -24,7 +25,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MKMCRM2W" height="0" width="0"
             style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
+
     <div class="gm-container">Game Over
         <form action="submit" class="gm-form" id="gm-form">
             <div>
@@ -47,44 +48,9 @@
         <div id="score" class="score">Your Score: 0</div>
     </div>
 
-    <script>
-        const Name = document.getElementById('name');
-        const Email = document.getElementById('email');
-        const Score = document.getElementById('score');
-        const Form = document.getElementById('gm-form');
-        const Restart = document.getElementById('restart');
-
-        Restart.addEventListener('click', () => {
-            location.reload();
-        });
-        Form.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const data = {
-                name: Name.value,
-                email: Email.value,
-                score: parseInt(Score.textContent.replace('Your Score: ', ''))
-            };
-            try {
-                const response = await fetch('/api/score', {
-                    method: "POST",
-                    headers: {
-                        "Content-type": "application/json"
-                    },
-                    body: JSON.stringify(data)
-                });
-                if (response.ok) {
-                    console.log('Form data submitted successfully');
-                    Form.reset();
-                } else {
-                    console.error('Form data submission failed');
-                }
-
-            } catch (error) {
-                console.error('An error occurred:', error);
-            }
-        });
-    </script>
+    <script src="./formHandle.js"></script>
     <script src="./script.js"></script>
+    <script src="./analytics.js"></script>
 </body>
 
 </html>
